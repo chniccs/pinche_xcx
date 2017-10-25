@@ -72,9 +72,17 @@ Page({
       'sk':app.globalData.sk
       },function(data){
       if(data.status == 1){
-        wx.navigateBack({
-          delta: 1
-        })
+        wx.showToast({
+          title: '发布成功',
+          icon: 'success',
+          duration: 1500
+        });
+        setTimeout(function(){
+          wx.navigateBack({
+            delta: 1
+          })
+        },1500);
+        
       }
     })
     

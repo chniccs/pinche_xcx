@@ -16,7 +16,7 @@ Page({
               // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
               res.tempFilePaths.forEach(function(item){
                 wx.uploadFile({
-                  url: 'https://xcx.codems.cn/api/upload', 
+                  url: util.getStaticUrl(), 
                   filePath: item,
                   name: 'file',
                   formData:{
@@ -27,7 +27,7 @@ Page({
                     console.log(data);
                     if(data.status == 1){
                       that.setData({
-                          files: that.data.files.concat(data.data)
+                        files: that.data.files.concat(util.getImgUrl(data.data))
                       });
                       util.clearError(that);
                     }else{
@@ -69,9 +69,17 @@ Page({
       'sk':app.globalData.sk
       },function(data){
       if(data.status == 1){
-        wx.navigateBack({
-          delta: 1
-        })
+        wx.showToast({
+          title: '发布成功',
+          icon: 'success',
+          duration: 1500
+        });
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500);
+        
       }
     })
     

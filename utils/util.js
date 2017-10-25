@@ -15,11 +15,24 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n  
 }  
 
-  
-var rootDocment = 'https://xcx.codems.cn/api/';
+// const rootUrl = 'http://localhost/xcx/';
+const rootUrl = 'https://www.dogdog.site/';
+// const baseUrl = 'http://localhost/xcx/index.php/';
+const baseUrl = 'https://www.dogdog.site/';
+// var rootDocment = 'https://xcx.codems.cn/api/';
+var rootDocment = baseUrl+'/api/';
   
 //修改成你的appid及appsecret
-var AppConf = { 'appid': 'wx61f7708fbb157848', 'appsecret':'57556a858121fae443f59863f9cb1cdb'};
+var AppConf = { 'appid': 'wx47230fd96ffe6e75', 'appsecret':'bab3a38f497c1531539c284dd1ba4937'};
+function getBaseUrl() {
+  return rootDocment;
+}
+function getStaticUrl(){
+  return baseUrl+'api/upload/upload'
+}
+function getImgUrl(url){
+  return rootUrl+'Uploads/'+url;
+}
 
 function req(url, data, cb) {
   data.appid = AppConf.appid;
@@ -160,5 +173,8 @@ module.exports = {
   getReq: getReq,
   getDateDiff:getDateDiff,
   escape2Html:escape2Html,
-  getDateBiff:getDateBiff
+  getDateBiff:getDateBiff,
+  getBaseUrl: getBaseUrl,
+  getStaticUrl: getStaticUrl,
+  getImgUrl: getImgUrl
 }  

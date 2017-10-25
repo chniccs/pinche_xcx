@@ -28,20 +28,22 @@ Page({
         }else{
           var arr = that.data.list;
         }
-
-        list.forEach(function(item){
-          var li = {
-            avatarUrl:item.avatarUrl,
-            content:item.content,
-            id:item.id,
-            img:JSON.parse(item.img),
-            nickName:item.nickName,
-            time:util.getDateBiff(item.time*1000),
-            zan:item.zan,
-            comments: item.comment
-          }
-          arr.push(li);
-        })
+        if(list!=null){
+          list.forEach(function (item) {
+            var li = {
+              avatarUrl: item.avatarUrl,
+              content: item.content,
+              id: item.id,
+              img: JSON.parse(item.img),
+              nickName: item.nickName,
+              time: util.getDateBiff(item.time * 1000),
+              zan: item.zan,
+              comments: item.comment
+            }
+            arr.push(li);
+          })
+        }
+        
         that.setData({list:arr});
      })
   },
